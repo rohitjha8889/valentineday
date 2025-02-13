@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Muskan!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fbc2eb);
+            font-family: 'Arial', sans-serif;
+            color: #333; /* Darker text for better visibility */
+            overflow-x: hidden;
+        }
+        .container {
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            /* height: 90vh; */
+        }
+        h1.display-4 {
+            font-size: 2.5rem;
+            color: #ff4b5c; /* Pinkish-red for a romantic touch */
+            animation: fadeIn 2s ease-in-out;
+        }
+        p.lead {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555; /* Slightly darker gray for contrast */
+        }
+        .heart {
+            color: #ff4b5c;
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite;
+        }
+        .story-box {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        .btn-play {
+            background-color: #ff4b5c;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #ff4b5c;
+        }
+        .btn-play:hover {
+            background-color: white;
+            color: #ff4b5c;
+            transform: scale(1.1);
+            border: 2px solid #ff4b5c;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4">💖 Happy Valentine's Day 💖</h1>
+        <p class="lead">A love story that began in the innocence of childhood, blossomed into something extraordinary, and continues to grow stronger every day.</p>
+        <div class="story-box">
+            <h3>🌟 Our Love Story 🌟</h3>
+            <p>It all started in class 5 when I first noticed you. You were the brightest star in the room, even then. Little did I know, destiny had already begun weaving its threads.</p>
+            <p>Years passed, and life took us on different paths. But fate brought us back together on Instagram. From casual chats to heartfelt conversations, our bond grew stronger with each passing day.</p>
+            <p>Even though miles separate us now, my heart beats for you every second. Your laughter is my favorite melody, and your smile lights up my world.</p>
+            <p>You are my forever, my soulmate, and my greatest blessing. This Valentine's Day, I celebrate you—my love, my life, my everything. ❤️</p>
+        </div>
+        
+    </div>
+    <script>
+        // Function to handle navigation and maintain audio continuity
+        function navigateToStory() {
+            const audio = document.getElementById("bg-music");
+
+            // Start playing the music if not already playing
+            if (audio.paused) {
+                audio.play().catch(error => console.log("Error playing music:", error));
+            }
+
+            // Store the current playback time in session storage
+            sessionStorage.setItem("audioPlaybackTime", audio.currentTime);
+
+            // Navigate to story.html after a short delay for smooth transition
+            setTimeout(() => {
+                window.location.href = "story.html";
+            }, 500); // 500ms delay for smoother UX
+        }
+
+        // On page load, resume audio if navigating from another page
+        window.onload = () => {
+            const audio = document.getElementById("bg-music");
+            const savedTime = sessionStorage.getItem("audioPlaybackTime");
+
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime); // Resume from saved time
+                audio.play().catch(error => console.log("Error resuming music:", error));
+            }
+        };
+    </script>
+</body>
+</html>
